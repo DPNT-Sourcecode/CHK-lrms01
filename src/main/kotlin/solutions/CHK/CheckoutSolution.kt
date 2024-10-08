@@ -72,6 +72,13 @@ object CheckoutSolution {
                           charFreq.getOrDefault('Y', 0) +
                           charFreq.getOrDefault('Z', 0)
 
+        val totalGroupDiscount = groupItemsCount.div(3) * 45
+        var remaining = groupItemsCount
+        while(remaining != (groupItemsCount % 3)){
+            // Remove from groups in order of most to least expensive
+            
+        }
+
         //Start calculating the total running cost
         var totalCost = 0
 
@@ -88,3 +95,4 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
