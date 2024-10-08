@@ -13,4 +13,9 @@ class CheckoutSolutionTest {
         Assertions.assertEquals("SKUs must contain items", exception.message)
     }
 
+    @Test
+    fun invalidItems(){
+        Assertions.assertEquals(-1, CheckoutSolution.checkout("HJ"))
+    }
+
 }
