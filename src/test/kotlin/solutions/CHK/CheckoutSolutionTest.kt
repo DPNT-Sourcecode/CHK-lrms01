@@ -77,6 +77,6 @@ class CheckoutSolutionTest {
 
     @Test
     fun groupBuyTest(){
-        Assertions.assertEquals(,CheckoutSolution.checkout("SSXXTTTYYZZZZ"))
+        Assertions.assertEquals(197 ,CheckoutSolution.checkout("SSXXTTTYYZZZZ"))
     }
 } 
