@@ -66,6 +66,11 @@ object CheckoutSolution {
         charFreq.calcFreeItems('N', 3, 'M')
         charFreq.calcFreeItems('R', 3, 'Q')
 
+        val groupItemsCount = charFreq.getOrDefault('S', 0) +
+                          charFreq.getOrDefault('T', 0) +
+                          charFreq.getOrDefault('X', 0) +
+                          charFreq.getOrDefault('Y', 0) +
+                          charFreq.getOrDefault('Z', 0)
 
         //Start calculating the total running cost
         var totalCost = 0
@@ -74,15 +79,8 @@ object CheckoutSolution {
         // respective handlers, then add the total to the running cost
         charFreq.forEach { item, count ->
            totalCost += when (item) {
-            'A' -> CalculationService.calcMultiOffer(count, item)
-            'H' -> CalculationService.calcMultiOffer(count, item)
-            'V' -> CalculationService.calcMultiOffer(count, item)
-            'B' -> CalculationService.calcSingleOffer(count, item)
-            'F' -> CalculationService.calcSingleOffer(count, item)
-            'K' -> CalculationService.calcSingleOffer(count, item)
-            'P' -> CalculationService.calcSingleOffer(count, item)
-            'Q' -> CalculationService.calcSingleOffer(count, item)
-            'U' -> CalculationService.calcSingleOffer(count, item)
+            'A', 'H', 'V' -> CalculationService.calcMultiOffer(count, item)
+            'B', 'F', 'K', 'P', 'Q', 'U' -> CalculationService.calcSingleOffer(count, item)
             else -> CalculationService.calcOthers(item, count)
            }
         }

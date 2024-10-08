@@ -40,7 +40,7 @@ object CalculationService {
         return count * CheckoutSolution.prices[item]!!
     }
 
-    fun calcGroupDiscount(charFreq: MutableMap<Char, Int>): Int{
-        
-    }
+    // fun calcGroupDiscount(charFreq: MutableMap<Char, Int>): Int{
+
+    // }
 }
