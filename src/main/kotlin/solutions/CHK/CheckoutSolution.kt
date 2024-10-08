@@ -59,6 +59,13 @@ object CheckoutSolution {
         val freeBs = charFreq['E']?.div(2) ?: 0
         charFreq['B'] = maxOf(charFreq.getOrDefault('B', 0) - freeBs, 0)
 
+        val freeMs = charFreq['N']?.div(3) ?: 0
+        charFreq['M'] = maxOf(charFreq.getOrDefault('M', 0) - freeMs, 0)
+
+        val freeQs = charFreq['R']?.div(3) ?: 0
+        charFreq['Q'] = maxOf(charFreq.getOrDefault('Q', 0) - freeQs, 0)
+
+
         //Start calculating the total running cost
         var totalCost = 0
 

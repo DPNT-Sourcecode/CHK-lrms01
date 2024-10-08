@@ -69,4 +69,9 @@ class CheckoutSolutionTest {
     fun hvMultiOfferTest() {
         Assertions.assertEquals(175, CheckoutSolution.checkout("HHVHHVHV"))
     }
+
+    @Test
+    fun freeMQTest() {
+        Assertions.assertEquals(270, CheckoutSolution.checkout("NNNMRRRQ"))
+    }
 }
