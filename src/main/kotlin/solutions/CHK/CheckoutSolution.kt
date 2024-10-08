@@ -72,15 +72,16 @@ object CheckoutSolution {
                           charFreq.getOrDefault('Y', 0) +
                           charFreq.getOrDefault('Z', 0)
 
-        val totalGroupDiscount = groupItemsCount.div(3) * 45
-        var remaining = groupItemsCount
-        while(remaining != (groupItemsCount % 3)){
-            // Remove from groups in order of most to least expensive
-            
-        }
-
+        val totalGroupDiscount = (groupItemsCount / 3) * 45
+        val groupsUsed = (groupItemsCount / 3) * 3
+        
+        charFreq['S'] = maxOf(charFreq.getOrDefault('S', 0) - groupsUsed / 5, 0)
+        charFreq['T'] = maxOf(charFreq.getOrDefault('T', 0) - groupsUsed / 5, 0)
+        charFreq['X'] = maxOf(charFreq.getOrDefault('X', 0) - groupsUsed / 5, 0)
+        charFreq['Y'] = maxOf(charFreq.getOrDefault('Y', 0) - groupsUsed / 5, 0)
+        charFreq['Z'] = maxOf(charFreq.getOrDefault('Z', 0) - groupsUsed / 5, 0)
         //Start calculating the total running cost
-        var totalCost = 0
+        var totalCost = totalGroupDiscount
 
         // Cycle through all the items and send them to their
         // respective handlers, then add the total to the running cost
@@ -95,4 +96,5 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
