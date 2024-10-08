@@ -55,5 +55,3 @@ object CheckoutSolution {
         return totalCost
     }
 }
-
-
