@@ -6,15 +6,15 @@ class SumSolutionTest {
 
     @Test
     fun sum() {
-        assertEquals(2, SumSolution.sum(1, 1))
+        Assertions.assertEquals(2, SumSolution.sum(1, 1))
     }
 
     @Test
-    fun 'negative inputs'(){
+    fun negativeInputs(){
         val exception = assertThrows<IllegalArgumentException>{
             SumSolution.sum(-1,-1)
         }
 
-        assertEquals("Sum inputs must be between 0 and 100", exception.message)
+        Assertions.assertEquals("Sum inputs must be between 0 and 100", exception.message)
     }
 }
