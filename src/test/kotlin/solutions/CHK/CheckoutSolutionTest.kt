@@ -45,6 +45,11 @@ class CheckoutSolutionTest {
         Assertions.assertEquals(80, CheckoutSolution.checkout("EEB"))
     }
 
+    @Test
+    fun eOfferFunctionsCorrectlySpareB(){
+        Assertions.assertEquals(230, CheckoutSolution.checkout("EEEEEBBB"))
+    }
+
     // @Test
     // fun correctOfferIsApplied()
 }
