@@ -9,5 +9,4 @@ class HelloSolutionTest {
         Assertions.assertEquals("Hello, John!", HelloSolution.hello("John"))
         Assertions.assertEquals("Hello, Darragh!", HelloSolution.hello("Darragh"))
     }
-
 }
