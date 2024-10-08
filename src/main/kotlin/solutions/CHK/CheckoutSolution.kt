@@ -15,11 +15,17 @@ object CheckoutSolution {
     )
 
     fun checkout(skus: String): Int {
+        
+        //Check the string is not blank or empty
+        require(!skus.isBlank()) { "SKUs must contain items" }
 
+        
         // Ensure all Items in the SKU are capitalised to match the map
         val upperSKUs = skus.uppercase()
 
         // Start by Checking All Items in the SKU are valid
+
+
 
         TODO("Solution not implemented")
     }
