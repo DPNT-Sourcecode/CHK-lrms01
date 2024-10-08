@@ -44,8 +44,12 @@ object CheckoutSolution {
         val offersAdded = count / offerCount
         val remainingItems = count % offerCount
 
-        return ( offersAdded.toInt() * offerPrice ) + ( remainingItems * prices[item]!! )
+        return ( offersAdded.toInt() * offerPrice ) + ( remainingItems * prices['B']!! )
 
+    }
+
+    fun calcOthers(item: Char, count: Int): Int{
+        return count * prices[item]!!
     }
 
     fun checkout(skus: String): Int {    
@@ -83,6 +87,7 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
 
 
