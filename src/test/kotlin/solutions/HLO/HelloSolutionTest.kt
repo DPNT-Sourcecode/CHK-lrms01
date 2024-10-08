@@ -6,7 +6,7 @@ class HelloSolutionTest {
 
     @Test
     fun stringIsReturned(){
-        Assertions.assertEquals("Hello World", HelloSolution.hello(""))
+        Assertions.assertEquals("Hello, World!", HelloSolution.hello(""))
     }
 
 }
