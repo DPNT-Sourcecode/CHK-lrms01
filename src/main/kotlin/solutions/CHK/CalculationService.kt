@@ -2,6 +2,13 @@ package solutions.CHK
 
 object CalculationService {
 
+    fun calcFreeItesm(offerItem: Char, offerCount: Int, freeItem: Char, charFreq: MutableMap<Char, Int>): MutableMap<Char, Int>{
+        val numberFree = charFreq[offerItem]?.div(offerCount) ?: 0
+        charFreq[freeItem] = maxOf(charFreq.getOrDefault(freeItem, 0) - numberFree, 0)
+
+        return charFreq
+    }
+
     // Create functions to calculate the total of "A" items
     fun calcMultiOffer(count: Int, item: Char): Int {
         var runningTotal = 0
@@ -40,3 +47,4 @@ object CalculationService {
         return count * CheckoutSolution.prices[item]!!
     }
 }
+

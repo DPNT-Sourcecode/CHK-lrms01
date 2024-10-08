@@ -53,7 +53,7 @@ object CheckoutSolution {
         
         // Get a count of each individual char in the SKU
         var charFreq = skus.groupingBy { it }.eachCount().toMutableMap()
-
+        
 
         // Calculate the number of free Bs and remove them from the item count
         val freeBs = charFreq['E']?.div(2) ?: 0
@@ -89,3 +89,4 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
