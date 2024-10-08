@@ -9,7 +9,8 @@ object CheckoutSolution {
         'B' to 30,
         'C' to 20,
         'D' to 15,
-        'E' to 40
+        'E' to 40,
+        'F' to 10
     )
 
     val offers = mapOf(

@@ -50,6 +50,13 @@ class CheckoutSolutionTest {
         Assertions.assertEquals(230, CheckoutSolution.checkout("EEEEEBBB"))
     }
 
-    // @Test
-    // fun correctOfferIsApplied()
+    @Test
+    fun fOfferFunctionsCorrectly(){
+        Assertions.assertEquals(30, CheckoutSolution.checkout("FFFF"))
+    }
+
+    @Test
+    fun noFOfferforTwoF(){
+        Assertions.assertEquals(20, CheckoutSolution.checkout("FF"))
+    }
 }
