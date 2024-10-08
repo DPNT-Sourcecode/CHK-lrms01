@@ -46,11 +46,6 @@ object CheckoutSolution {
     )
 
     fun checkout(skus: String): Int {    
-        // Ensure all Items in the SKU are capitalised and stripped of
-        // whitespace to match the map
-
-        //val adjustedSKUs = skus.uppercase().replace(" ", "").trim()
-
         // Start by Checking All Items in the SKU are valid
         if(skus.any{ it !in prices.keys }) {
             return -1
@@ -72,8 +67,14 @@ object CheckoutSolution {
         charFreq.forEach { item, count ->
            totalCost += when (item) {
             'A' -> CalculationService.calcMultiOffer(count, item)
+            'H' -> CalculationService.calcMultiOffer(count, item)
+            'V' -> CalculationService.calcMultiOffer(count, item)
             'B' -> CalculationService.calcSingleOffer(count, item)
             'F' -> CalculationService.calcSingleOffer(count, item)
+            'K' -> CalculationService.calcSingleOffer(count, item)
+            'P' -> CalculationService.calcSingleOffer(count, item)
+            'Q' -> CalculationService.calcSingleOffer(count, item)
+            'U' -> CalculationService.calcSingleOffer(count, item)
             else -> CalculationService.calcOthers(item, count)
            }
         }

@@ -64,4 +64,9 @@ class CheckoutSolutionTest {
     fun fiveFOffer() {
         Assertions.assertEquals(40, CheckoutSolution.checkout("FFFFF"))
     }
+
+    @Test
+    fun hvMultiOfferTest() {
+        Assertions.assertEquals(175, CheckoutSolution.checkout("HHVHHVHV"))
+    }
 }
