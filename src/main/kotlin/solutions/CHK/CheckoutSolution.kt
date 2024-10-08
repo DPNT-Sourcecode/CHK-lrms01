@@ -30,14 +30,14 @@ object CheckoutSolution {
         'P' to 50,
         'Q' to 30,
         'R' to 50,
-        'S' to 30,
+        'S' to 20,
         'T' to 20,
         'U' to 40,
         'V' to 50,
         'W' to 20,
-        'X' to 90,
-        'Y' to 10,
-        'Z' to 50
+        'X' to 17,
+        'Y' to 20,
+        'Z' to 21
     )
 
     val offers = mapOf(
