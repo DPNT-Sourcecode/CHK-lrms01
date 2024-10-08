@@ -54,16 +54,15 @@ object CheckoutSolution {
         // Get a count of each individual char in the SKU
         var charFreq = skus.groupingBy { it }.eachCount().toMutableMap()
         
+        fun MutableList<Char,Int>.calcFreeItems(offerItem: Char, offerCount: Int, freeItem: Char): MutableMap<Char, Int>{
+            val numberFree = this[offerItem]?.div(offerCount) ?: 0
+            this[freeItem] = maxOf(this.getOrDefault(freeItem, 0) - numberFree, 0)
+
+            return this
+        }
 
         // Calculate the number of free Bs and remove them from the item count
-        val freeBs = charFreq['E']?.div(2) ?: 0
-        charFreq['B'] = maxOf(charFreq.getOrDefault('B', 0) - freeBs, 0)
-
-        val freeMs = charFreq['N']?.div(3) ?: 0
-        charFreq['M'] = maxOf(charFreq.getOrDefault('M', 0) - freeMs, 0)
-
-        val freeQs = charFreq['R']?.div(3) ?: 0
-        charFreq['Q'] = maxOf(charFreq.getOrDefault('Q', 0) - freeQs, 0)
+        charFreq.calcFreeItems('E', 2, 'B')
 
 
         //Start calculating the total running cost
@@ -89,4 +88,5 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
