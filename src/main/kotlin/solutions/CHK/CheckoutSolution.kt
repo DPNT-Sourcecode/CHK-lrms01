@@ -17,16 +17,10 @@ object CheckoutSolution {
         'B' to Pair(2, 45)
     )
 
-    // Create functions to calculate the total of "A" items
-    fun calcA(count: Int): Int {
-        var runningTotal = 0
 
-        offers[A]?.forEach { (offerCount, offerPrice) ->
-            val offerQuantity = count / offerCount
-            runningTotal += offerQuantity * offerPrice
-            count %= offerCount
-        }
-    }
+    // fun calcB(count: Int): Int {
+
+    // }
 
     fun checkout(skus: String): Int {    
         // Ensure all Items in the SKU are capitalised and stripped of
@@ -74,3 +68,4 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
