@@ -19,15 +19,16 @@ object CheckoutSolution {
     fun checkout(skus: String): Int {    
         // Ensure all Items in the SKU are capitalised and stripped of
         // whitespace to match the map
-        val adjustedSKUs = skus.uppercase().replace(" ", "").trim()
+
+        //val adjustedSKUs = skus.uppercase().replace(" ", "").trim()
 
         // Start by Checking All Items in the SKU are valid
-        if(adjustedSKUs.any{ it !in prices.keys }) {
+        if(skus.any{ it !in prices.keys }) {
             return -1
         }
         
         // Get a count of each individual char in the SKU
-        val charFreq = adjustedSKUs.groupingBy { it }.eachCount()
+        val charFreq = skus.groupingBy { it }.eachCount()
 
 
         //Start calculating the total running cost
@@ -57,5 +58,6 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
 
