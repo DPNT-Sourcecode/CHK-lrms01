@@ -46,6 +46,7 @@ object CheckoutSolution {
            totalCost += when (item) {
             'A' -> CalculationService.calcA(count)
             'B' -> CalculationService.calcB(count)
+            'F' -> CalculationService.calcF(count)
             else -> CalculationService.calcOthers(item, count)
            }
         }
@@ -53,4 +54,5 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
