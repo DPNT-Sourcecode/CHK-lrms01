@@ -17,44 +17,6 @@ object CheckoutSolution {
         'B' to Offer(2, 45)
     )
 
-    // Create functions to calculate the total of "A" items
-    fun calcA(count: Int): Int {
-        var runningTotal = 0
-        var remainingCount = count
-
-        // Test each of the available offers
-        val aOffers = offers['A'] as? List<Offer> ?: return remainingCount * prices['A']!!
-
-        for(offer in aOffers){
-
-            // Test how many times we can apply the offer
-            val offerQuantity = remainingCount / offer.quantity
-
-            // Apply the offer 'x' times and add the cost to the total
-            runningTotal += offerQuantity * offer.cost
-
-            // Adjust the remaining count as to be available for the next offer
-            remainingCount %= offer.quantity
-        }
-
-        // Add whatever the cost of the remaining items is
-        runningTotal += remainingCount * prices['A']!!
-        return runningTotal
-    }
-
-    fun calcB(count: Int): Int {
-        val offer = offers['B'] as? Offer ?: return count * prices['B']!!
-        val offersAdded = count / offer.quantity
-        val remainingItems = count % offer.quantity
-
-        return ( offersAdded.toInt() * offer.cost ) + ( remainingItems * prices['B']!! )
-
-    }
-
-    fun calcOthers(item: Char, count: Int): Int{
-        return count * prices[item]!!
-    }
-
     fun checkout(skus: String): Int {    
         // Ensure all Items in the SKU are capitalised and stripped of
         // whitespace to match the map
@@ -81,12 +43,13 @@ object CheckoutSolution {
         // respective handlers, then add the total to the running cost
         charFreq.forEach { item, count ->
            totalCost += when (item) {
-            'A' -> calcA(count)
-            'B' -> calcB(count)
-            else -> calcOthers(item, count)
+            'A' -> CalculationService.calcA(count)
+            'B' -> CalculationService.calcB(count)
+            else -> CalculationService.calcOthers(item, count)
            }
         }
         
         return totalCost
     }
 }
+
