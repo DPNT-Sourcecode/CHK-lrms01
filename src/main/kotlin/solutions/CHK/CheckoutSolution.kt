@@ -20,10 +20,10 @@ object CheckoutSolution {
     // Create functions to calculate the total of "A" items
     fun calcA(count: Int): Int {
         var runningTotal = 0
-        val remainingCount = count
+        var remainingCount = count
 
         // Test each of the available offers
-        aOffers = offers['A'] as List<Pair<Int, Int>>
+        val aOffers = offers['A'] as List<Pair<Int, Int>>
         aOffers.forEach { (offerCount, offerPrice) ->
 
             // Test how many times we can apply the offer
@@ -89,8 +89,3 @@ object CheckoutSolution {
         return totalCost
     }
 }
-
-
-
-
-
