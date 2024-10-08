@@ -1,5 +1,7 @@
 package solutions.CHK
 
+import kotlin.math.floor
+
 object CheckoutSolution {
     // Create our Price and offers tables
     val prices = mapOf(
@@ -38,20 +40,21 @@ object CheckoutSolution {
 
                 // Get the number of items needed for the offer
                 // and the price of the offer
-                val (offerCount, offerPrice) = offers[item]
+                val (offerCount, offerPrice) = offers[item]!!
                 
                 // Find out how many times the count fits the offer
                 val offersAdded = floor( count / offerCount )
                 val remainingItems = count % offerCount
 
                 // Add costs to the running total
-                totalCost += ( offersAdded * offerPrice ) + ( remainingItems * prices[item] )
+                totalCost += ( offersAdded * offerPrice ) + ( remainingItems * prices[item]!! )
             }
             else {
-                totalCost += count * prices[item]
+                totalCost += count * prices[item]!!
             }
         }
         
         return totalCost
     }
 }
+
