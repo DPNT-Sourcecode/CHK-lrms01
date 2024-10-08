@@ -22,7 +22,7 @@ object CheckoutSolution {
         'H' to 10,
         'I' to 35,
         'J' to 60,
-        'K' to 80,
+        'K' to 70,
         'L' to 90,
         'M' to 15,
         'N' to 40,
@@ -45,7 +45,7 @@ object CheckoutSolution {
         'B' to Offer(2, 45),
         'F' to Offer(3, 20),
         'H' to listOf(Offer(10, 80), Offer(5,45)),
-        'K' to Offer(2,150),
+        'K' to Offer(2,120),
         'P' to Offer(5, 200),
         'Q' to Offer(3,80),
         'U' to Offer(4,120),
@@ -111,3 +111,4 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
