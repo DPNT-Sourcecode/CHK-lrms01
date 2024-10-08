@@ -13,9 +13,14 @@ object CheckoutSolution {
     )
 
     val offers = mapOf(
-        'A' to Pair(3, 130),
+        'A' to ListOf(Pair(5,200), Pair(3, 130)),
         'B' to Pair(2, 45)
     )
+
+    // Create functions to ca
+    fun calcA(count: Int): Int {
+
+    }
 
     fun checkout(skus: String): Int {    
         // Ensure all Items in the SKU are capitalised and stripped of
@@ -30,13 +35,11 @@ object CheckoutSolution {
         
         // Get a count of each individual char in the SKU
         var charFreq = skus.groupingBy { it }.eachCount().toMutableMap()
-        
+
+
+        // Calculate the number of free Bs and remove them from the item count
         val freeBs = charFreq['E']?.div(2) ?: 0
         charFreq['B'] = charFreq.getOrDefault('B', 0) - freeBs
-
-
-        println(charFreq['E']?.div(2) ?: "null")
-
 
         //Start calculating the total running cost
         var totalCost = 0
@@ -65,6 +68,7 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
 
 
