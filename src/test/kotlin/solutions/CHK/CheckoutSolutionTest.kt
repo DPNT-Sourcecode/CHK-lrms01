@@ -29,4 +29,14 @@ class CheckoutSolutionTest {
     fun specialOfferFunctions(){
         Assertions.assertEquals(130, CheckoutSolution.checkout("AAA"))
     }
+
+    @Test
+    fun removeWhitespace() {
+        Assertions.assertEquals(45, CheckoutSolution.checkout(" B B "))
+    }
+
+    @Test
+    fun multipleOffers(){
+        Assertions.assertEquals(175, CheckoutSolution.checkout("AAABB"))
+    }
 }
