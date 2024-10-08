@@ -2,7 +2,6 @@ package solutions.CHK
 
 object CheckoutSolution {
     // Create our Price and offers tables
-
     val prices = mapOf(
         'A' to 50,
         'B' to 30,
@@ -17,7 +16,10 @@ object CheckoutSolution {
 
     fun checkout(skus: String): Int {
 
-        // Take SKUS
+        // Ensure all Items in the SKU are capitalised to match the map
+        val upperSKUs = skus.uppercase()
+
+        // Start by Checking All Items in the SKU are valid
 
         TODO("Solution not implemented")
     }
