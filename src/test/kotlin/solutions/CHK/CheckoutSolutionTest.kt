@@ -27,9 +27,6 @@ class CheckoutSolutionTest {
 
     @Test
     fun specialOfferFunctions(){
-        Assertions.assertEquals(130, CheckoutSolution,checkout("AAA"))
+        Assertions.assertEquals(130, CheckoutSolution.checkout("AAA"))
     }
-
-    @Test
-    fun whitespaceIsHandled
 }

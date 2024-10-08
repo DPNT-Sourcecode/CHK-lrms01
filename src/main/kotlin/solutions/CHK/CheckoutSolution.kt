@@ -30,9 +30,9 @@ object CheckoutSolution {
 
         //Start calculating the total running cost
         var totalCost = 0
-
-        charFreq.forEach{
-            println(it)
+        println(offers['A'])
+        charFreq.forEach{ item, count ->
+            
         }
         
         return -1
