@@ -20,7 +20,7 @@ object CheckoutSolution {
         val adjustedSKUs = skus.uppercase().replace(" ", "").trim()
 
         // Start by Checking All Items in the SKU are valid
-        if(adjustedSKUs.any{ it !in prices.keys }){
+        if(adjustedSKUs.any{ it !in prices.keys }) {
             return -1
         }
         
@@ -30,11 +30,28 @@ object CheckoutSolution {
 
         //Start calculating the total running cost
         var totalCost = 0
-        println(offers['A'].toString())
-        charFreq.forEach{ item, count ->
-            
+
+        // Cycle through all the item counts in the map
+        charFreq.forEach { item, count ->
+            // Test whether offers exist for the current item
+            if(item in offers) {
+
+                // Get the number of items needed for the offer
+                // and the price of the offer
+                val (offerCount, offerPrice) = offers[item]
+                
+                // Find out how many times the count fits the offer
+                val offersAdded = floor( count / offerCount )
+                val remainingItems = count % offerCount
+
+                // Add costs to the running total
+                totalCost += ( offersAdded * offerPrice ) + ( remainingItems * prices[item] )
+            }
+            else {
+                totalCost += count * prices[item]
+            }
         }
         
-        return -1
+        return totalCost
     }
 }
