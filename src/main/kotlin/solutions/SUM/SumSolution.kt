@@ -7,5 +7,3 @@ object SumSolution {
         return x+y
     }
 }
-
-
