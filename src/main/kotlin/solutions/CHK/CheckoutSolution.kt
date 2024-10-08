@@ -14,12 +14,7 @@ object CheckoutSolution {
         'B' to pair(2, 45)
     )
 
-    fun checkout(skus: String): Int {
-        
-        //Check the string is not blank or empty
-        require(!skus.isBlank()) { "SKUs must contain items" }
-
-        
+    fun checkout(skus: String): Int {    
         // Ensure all Items in the SKU are capitalised to match the map
         val upperSKUs = skus.uppercase()
 
