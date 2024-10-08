@@ -20,31 +20,33 @@ object CheckoutSolution {
     // Create functions to calculate the total of "A" items
     fun calcA(count: Int): Int {
         var runningTotal = 0
+        val remainingCount = count
 
         // Test each of the available offers
-        offers['A']?.forEach { (offerCount, offerPrice) ->
+        aOffers = offers['A'] as List<Pair<Int, Int>>
+        aOffers.forEach { (offerCount, offerPrice) ->
 
             // Test how many times we can apply the offer
-            val offerQuantity = count / offerCount
+            val offerQuantity = remainingCount / offerCount
 
             // Apply the offer 'x' times and add the cost to the total
             runningTotal += offerQuantity * offerPrice
 
             // Adjust the remaining count as to be available for the next offer
-            count %= offerCount
+            remainingCount %= offerCount
         }
 
         // Add whatever the cost of the remaining items is
-        runningTotal += count * prices['A']!!
+        runningTotal += remainingCount * prices['A']!!
         return runningTotal
     }
 
     fun calcB(count: Int): Int {
-        val (offerCount, offerPrice) = offers['B']!!
-        val offersAdded = count / offerCount
-        val remainingItems = count % offerCount
+        val offer = offers['B'] as Pair<Int,Int>
+        val offersAdded = count / offer.first
+        val remainingItems = count % offer.first
 
-        return ( offersAdded.toInt() * offerPrice ) + ( remainingItems * prices['B']!! )
+        return ( offersAdded.toInt() * offer.second ) + ( remainingItems * prices['B']!! )
 
     }
 
@@ -87,6 +89,7 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
 
 
