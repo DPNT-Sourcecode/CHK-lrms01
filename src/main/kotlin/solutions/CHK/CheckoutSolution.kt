@@ -23,7 +23,8 @@ object CheckoutSolution {
         var remainingCount = count
 
         // Test each of the available offers
-        val aOffers = offers['A'] ?: emptyList()    
+        val aOffers = offers['A'] as? List<Offer> ?: return remainingCount * prices['A']!!
+
         for(offer in aOffers){
 
             // Test how many times we can apply the offer
@@ -42,7 +43,7 @@ object CheckoutSolution {
     }
 
     fun calcB(count: Int): Int {
-        val offer = offers['B'] as Offer
+        val offer = offers['B'] as? Offer ?: return count * prices['B']!!
         val offersAdded = count / offer.quantity
         val remainingItems = count % offer.quantity
 

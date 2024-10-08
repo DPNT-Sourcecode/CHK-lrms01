@@ -42,7 +42,7 @@ class CheckoutSolutionTest {
 
     @Test
     fun eOfferFunctionsCorrectly(){
-        Assertions.assertEquals(80, CheckoutSolution.checkout("EEEB"))
+        Assertions.assertEquals(80, CheckoutSolution.checkout("EEB"))
     }
 
     // @Test
