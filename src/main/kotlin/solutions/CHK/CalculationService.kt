@@ -3,12 +3,12 @@ package solutions.CHK
 object CalculationService {
 
     // Create functions to calculate the total of "A" items
-    fun calcA(count: Int): Int {
+    fun calcMultiOffer(count: Int, item: Char): Int {
         var runningTotal = 0
         var remainingCount = count
 
         // Test each of the available offers
-        val aOffers = CheckoutSolution.offers['A'] as? List<Offer> ?: return remainingCount * CheckoutSolution.prices['A']!!
+        val aOffers = CheckoutSolution.offers[item] as? List<Offer> ?: return remainingCount * CheckoutSolution.prices[item]!!
 
         for(offer in aOffers){
 
@@ -23,25 +23,17 @@ object CalculationService {
         }
 
         // Add whatever the cost of the remaining items is
-        runningTotal += remainingCount * CheckoutSolution.prices['A']!!
+        runningTotal += remainingCount * CheckoutSolution.prices[item]!!
         return runningTotal
     }
 
-    fun calcB(count: Int): Int {
-        val offer = CheckoutSolution.offers['B'] as? Offer ?: return count * CheckoutSolution.prices['B']!!
+    fun calcSingleOffer(count: Int, item: Char): Int {
+        val offer = CheckoutSolution.offers[item] as? Offer ?: return count * CheckoutSolution.prices[item]!!
         val offersAdded = count / offer.quantity
         val remainingItems = count % offer.quantity
 
-        return ( offersAdded.toInt() * offer.cost ) + ( remainingItems * CheckoutSolution.prices['B']!! )
+        return ( offersAdded.toInt() * offer.cost ) + ( remainingItems * CheckoutSolution.prices[item]!! )
 
-    }
-
-    fun calcF(count: Int): Int {
-        val offer = CheckoutSolution.offers['F'] as? Offer ?: return count * CheckoutSolution.prices['F']!!
-        val offersAdded = count / offer.quantity
-        val remainingItems = count % offer.quantity
-
-        return ( offersAdded.toInt() * offer.cost ) + ( remainingItems * CheckoutSolution.prices['F']!! )
     }
 
     fun calcOthers(item: Char, count: Int): Int{
