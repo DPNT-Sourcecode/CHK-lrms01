@@ -31,6 +31,8 @@ object CheckoutSolution {
         // Get a count of each individual char in the SKU
         val charFreq = skus.groupingBy { it }.eachCount()
 
+        println(charFreq['E'] / 2)
+
 
         //Start calculating the total running cost
         var totalCost = 0
