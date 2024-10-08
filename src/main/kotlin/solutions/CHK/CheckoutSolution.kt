@@ -13,14 +13,33 @@ object CheckoutSolution {
     )
 
     val offers = mapOf(
-        'A' to ListOf(Pair(5,200), Pair(3, 130)),
+        'A' to listOf(Pair(5,200), Pair(3, 130)),
         'B' to Pair(2, 45)
     )
 
+    // Create functions to calculate the total of "A" items
+    fun calcA(count: Int): Int {
+        var runningTotal = 0
 
-    // fun calcB(count: Int): Int {
+        // Test each of the available offers
+        offers['A']?.forEach { (offerCount, offerPrice) ->
 
-    // }
+            // Test how many times we can apply the offer
+            val offerQuantity = count / offerCount
+
+            // Apply the offer 'x' times and add the cost to the total
+            runningTotal += offerQuantity * offerPrice
+
+            // Adjust the remaining count as to be available for the next offer
+            count %= offerCount
+        }
+
+        // Add whatever the cost of the remaining items is
+        runningTotal += count * prices['A']!!
+        return runningTotal
+    }
+
+    // fun calcB(count: Int): Int {}
 
     fun checkout(skus: String): Int {    
         // Ensure all Items in the SKU are capitalised and stripped of
@@ -68,4 +87,5 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
