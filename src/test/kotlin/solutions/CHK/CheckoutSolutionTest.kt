@@ -74,4 +74,9 @@ class CheckoutSolutionTest {
     fun freeMQTest() {
         Assertions.assertEquals(270, CheckoutSolution.checkout("NNNMRRRQ"))
     }
-}
+
+    @Test
+    fun groupBuyTest(){
+        Assertions.assertEquals(,CheckoutSolution.checkout("SSXXTTTYYZZZZ"))
+    }
+} 

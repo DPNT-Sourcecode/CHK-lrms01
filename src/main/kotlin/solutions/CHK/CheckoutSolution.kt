@@ -66,16 +66,34 @@ object CheckoutSolution {
         charFreq.calcFreeItems('N', 3, 'M')
         charFreq.calcFreeItems('R', 3, 'Q')
 
+
+        // Count the Total number in the group buy discount
         val groupItemsCount = charFreq.getOrDefault('S', 0) +
                           charFreq.getOrDefault('T', 0) +
                           charFreq.getOrDefault('X', 0) +
                           charFreq.getOrDefault('Y', 0) +
                           charFreq.getOrDefault('Z', 0)
 
-        val totalGroupDiscount = (groupItemsCount / 3) * 45
-        
-        val groupsUsed = groupItemsCount / 3
+
+        // Number of discounts 
+        val groupBuys = groupItemsCount / 3
+        // Calculate the cost of the group buy
+        val totalGroupDiscount = groupBuys * 45
+
+        // Create a list in priority order of items to remove
         val priorityOrder = listOf('Z','Y','T','S','X')
+
+        // Whole number of items used in the group buy
+        var itemsToRemove = groupBuys * 3
+
+        for(item in priorityOrder) {
+            if(itemsToRemove <= 0) break
+            val count = charFreq.getOrDefault(item, 0)
+            val remove = minOf(count, itemsToRemove)
+
+            charFreq[item] = count - remove
+            itemsToRemove -= remove
+        }
         
         //Start calculating the total running cost
         var totalCost = totalGroupDiscount

@@ -39,8 +39,4 @@ object CalculationService {
     fun calcOthers(item: Char, count: Int): Int{
         return count * CheckoutSolution.prices[item]!!
     }
-
-    // fun calcGroupDiscount(charFreq: MutableMap<Char, Int>): Int{
-
-    // }
 }
