@@ -2,6 +2,13 @@ package solutions.CHK
 
 import kotlin.math.floor
 
+
+fun MutableMap<Char,Int>.calcFreeItems(offerItem: Char, offerCount: Int, freeItem: Char): MutableMap<Char, Int>{
+    val numberFree = this[offerItem]?.div(offerCount) ?: 0
+    this[freeItem] = maxOf(this.getOrDefault(freeItem, 0) - numberFree, 0)
+
+    return this
+}
 object CheckoutSolution {
     // Create our Price and offers tables
     val prices = mapOf(
@@ -53,16 +60,11 @@ object CheckoutSolution {
         
         // Get a count of each individual char in the SKU
         var charFreq = skus.groupingBy { it }.eachCount().toMutableMap()
-        
-        fun MutableList<Char,Int>.calcFreeItems(offerItem: Char, offerCount: Int, freeItem: Char): MutableMap<Char, Int>{
-            val numberFree = this[offerItem]?.div(offerCount) ?: 0
-            this[freeItem] = maxOf(this.getOrDefault(freeItem, 0) - numberFree, 0)
-
-            return this
-        }
 
         // Calculate the number of free Bs and remove them from the item count
         charFreq.calcFreeItems('E', 2, 'B')
+        charFreq.calcFreeItems('N', 3, 'M')
+        charFreq.calcFreeItems('R', 3, 'Q')
 
 
         //Start calculating the total running cost
@@ -88,5 +90,3 @@ object CheckoutSolution {
         return totalCost
     }
 }
-
-

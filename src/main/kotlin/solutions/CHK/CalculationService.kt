@@ -40,6 +40,3 @@ object CalculationService {
         return count * CheckoutSolution.prices[item]!!
     }
 }
-
-
-
