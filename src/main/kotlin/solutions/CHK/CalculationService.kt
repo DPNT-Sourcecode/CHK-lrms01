@@ -36,6 +36,14 @@ object CalculationService {
 
     }
 
+    fun calcF(count: Int): Int {
+        val offer = CheckoutSolution.offers['F'] as? Offer ?: return count * CheckoutSolution.prices['F']!!
+        val offersAdded = count / offer.quantity
+        val remainingItems = count % offer.quantity
+
+        return ( offersAdded.toInt() * offer.cost ) + ( remainingItems * CheckoutSolution.prices['F']!! )
+    }
+
     fun calcOthers(item: Char, count: Int): Int{
         return count * CheckoutSolution.prices[item]!!
     }

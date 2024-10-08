@@ -59,4 +59,9 @@ class CheckoutSolutionTest {
     fun noFOfferforTwoF(){
         Assertions.assertEquals(20, CheckoutSolution.checkout("FF"))
     }
+
+    @Test
+    fun fiveFOffer() {
+        Assertions.assertEquals(40, CheckoutSolution.checkout("FFFFF"))
+    }
 }

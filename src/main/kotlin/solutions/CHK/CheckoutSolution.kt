@@ -15,7 +15,8 @@ object CheckoutSolution {
 
     val offers = mapOf(
         'A' to listOf(Offer(5,200), Offer(3, 130)),
-        'B' to Offer(2, 45)
+        'B' to Offer(2, 45),
+        'F' to Offer(3, 20)
     )
 
     fun checkout(skus: String): Int {    
