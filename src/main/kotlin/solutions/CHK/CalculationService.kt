@@ -2,7 +2,7 @@ package solutions.CHK
 
 object CalculationService {
 
-    fun calcFreeItesm(offerItem: Char, offerCount: Int, freeItem: Char, charFreq: MutableMap<Char, Int>): MutableMap<Char, Int>{
+    fun calcFreeItems(offerItem: Char, offerCount: Int, freeItem: Char, charFreq: MutableMap<Char, Int>): MutableMap<Char, Int>{
         val numberFree = charFreq[offerItem]?.div(offerCount) ?: 0
         charFreq[freeItem] = maxOf(charFreq.getOrDefault(freeItem, 0) - numberFree, 0)
 
@@ -47,4 +47,5 @@ object CalculationService {
         return count * CheckoutSolution.prices[item]!!
     }
 }
+
 
