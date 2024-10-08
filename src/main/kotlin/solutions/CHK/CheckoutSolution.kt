@@ -43,11 +43,11 @@ object CheckoutSolution {
                 val (offerCount, offerPrice) = offers[item]!!
                 
                 // Find out how many times the count fits the offer
-                val offersAdded = floor( count / offerCount )
+                val offersAdded = count / offerCount
                 val remainingItems = count % offerCount
 
                 // Add costs to the running total
-                totalCost += ( offersAdded * offerPrice ) + ( remainingItems * prices[item]!! )
+                totalCost += ( offersAdded.toInt() * offerPrice ) + ( remainingItems * prices[item]!! )
             }
             else {
                 totalCost += count * prices[item]!!
@@ -57,4 +57,5 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
