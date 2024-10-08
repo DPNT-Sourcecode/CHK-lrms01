@@ -12,7 +12,7 @@ class CheckoutSolutionTest {
 
     @Test
     fun invalidItems(){
-        Assertions.assertEquals(-1, CheckoutSolution.checkout("HJ"))
+        Assertions.assertEquals(-1, CheckoutSolution.checkout("@1"))
     }
 
     @Test
