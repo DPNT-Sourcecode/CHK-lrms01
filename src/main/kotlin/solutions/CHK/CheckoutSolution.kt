@@ -13,8 +13,8 @@ object CheckoutSolution {
     )
 
     val offers = mapOf(
-        'A' to listOf(Pair(5,200), Pair(3, 130)),
-        'B' to Pair(2, 45)
+        'A' to listOf(Offer(5,200), Offer(3, 130)),
+        'B' to Offer(2, 45)
     )
 
     // Create functions to calculate the total of "A" items
@@ -23,17 +23,17 @@ object CheckoutSolution {
         var remainingCount = count
 
         // Test each of the available offers
-        val aOffers = offers['A'] as List<Pair<Int, Int>>
-        aOffers.forEach { (offerCount, offerPrice) ->
+        val aOffers = offers['A'] ?: emptyList()    
+        for(offer in aOffers){
 
             // Test how many times we can apply the offer
-            val offerQuantity = remainingCount / offerCount
+            val offerQuantity = remainingCount / offer.quantity
 
             // Apply the offer 'x' times and add the cost to the total
-            runningTotal += offerQuantity * offerPrice
+            runningTotal += offerQuantity * offer.cost
 
             // Adjust the remaining count as to be available for the next offer
-            remainingCount %= offerCount
+            remainingCount %= offer.quantity
         }
 
         // Add whatever the cost of the remaining items is
@@ -42,11 +42,11 @@ object CheckoutSolution {
     }
 
     fun calcB(count: Int): Int {
-        val offer = offers['B'] as Pair<Int,Int>
-        val offersAdded = count / offer.first
-        val remainingItems = count % offer.first
+        val offer = offers['B'] as Offer
+        val offersAdded = count / offer.quantity
+        val remainingItems = count % offer.quantity
 
-        return ( offersAdded.toInt() * offer.second ) + ( remainingItems * prices['B']!! )
+        return ( offersAdded.toInt() * offer.cost ) + ( remainingItems * prices['B']!! )
 
     }
 
