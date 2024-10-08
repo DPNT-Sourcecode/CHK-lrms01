@@ -29,7 +29,14 @@ object CheckoutSolution {
         }
         
         // Get a count of each individual char in the SKU
-        val charFreq = skus.groupingBy { it }.eachCount()
+        var charFreq = skus.groupingBy { it }.eachCount()
+        
+
+
+        if(charFreq['E'] > 0){
+            val freeBs = charFreq['E']?.div(2) ?: 0
+            charFreq['B']?.minusAssign(freeBs) ?: 0
+        }
 
         println(charFreq['E']?.div(2) ?: "null")
 
@@ -61,4 +68,5 @@ object CheckoutSolution {
         return totalCost
     }
 }
+
 
