@@ -73,13 +73,10 @@ object CheckoutSolution {
                           charFreq.getOrDefault('Z', 0)
 
         val totalGroupDiscount = (groupItemsCount / 3) * 45
-        val groupsUsed = (groupItemsCount / 3) * 3
         
-        charFreq['S'] = maxOf(charFreq.getOrDefault('S', 0) - groupsUsed / 5, 0)
-        charFreq['T'] = maxOf(charFreq.getOrDefault('T', 0) - groupsUsed / 5, 0)
-        charFreq['X'] = maxOf(charFreq.getOrDefault('X', 0) - groupsUsed / 5, 0)
-        charFreq['Y'] = maxOf(charFreq.getOrDefault('Y', 0) - groupsUsed / 5, 0)
-        charFreq['Z'] = maxOf(charFreq.getOrDefault('Z', 0) - groupsUsed / 5, 0)
+        val groupsUsed = groupItemsCount / 3
+        val priorityOrder = listOf('Z','Y','T','S','X')
+        
         //Start calculating the total running cost
         var totalCost = totalGroupDiscount
 
@@ -96,5 +93,3 @@ object CheckoutSolution {
         return totalCost
     }
 }
-
-
